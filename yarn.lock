@@ -274,6 +274,21 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@master/normal.css@^1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@master/normal.css/-/normal.css-1.9.3.tgz#541685db74f85981b8f4caf901bbd5b260ef3347"
+  integrity sha512-U+cnZbfLi4eXaYu6B2JwlXqmSUw8sv6irxCNzn5sjGsfccjDL7Tra9Nvrea0pHMs326HmBI9LkfQ0AdMqGzlOQ==
+
+"@master/style@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@master/style/-/style-1.6.0.tgz#3f686b5370bfbcc3f799e285e4e440f3388b2bc3"
+  integrity sha512-QaF0vmqR91XRa6P7b8aTX6w14TDPifJ0YbV2YiDS/9QrqaQice9acJbYyxKus1LOFpwxFBG1tbusCJhhFSO7uQ==
+
+"@master/styles@^1.14.0":
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/@master/styles/-/styles-1.14.0.tgz#37b87cab363783698972439bb3f3f1517190a2c9"
+  integrity sha512-2nh/aCEGZ+ICDSlqxNO8mZKBuOvdKDZs/gkZtrnN4ILD6NwiUm8TgR101VpNgT7qMD2ajwYC13JWWQhRKiLYHA==
+
 "@rollup/pluginutils@^4.2.1":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-4.2.1.tgz#e6c6c3aba0744edce3fb2074922d3776c0af2a6d"
