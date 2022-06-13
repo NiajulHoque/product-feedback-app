@@ -1,5 +1,5 @@
 import React from "react";
-import FeedbackCard from "./Feedback";
+import IFeedbackCard from "./FeedbackCard";
 import SuggestionsBar from "./SuggestionsBar";
 
 function DashboardLayout() {
