@@ -1,4 +1,3 @@
-import React from "react";
 import FeedbackCard from "./FeedbackCard";
 import SuggestionsBar from "./SuggestionsBar";
 
