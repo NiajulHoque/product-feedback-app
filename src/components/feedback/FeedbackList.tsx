@@ -3,7 +3,18 @@ import { Feedback } from "../../models/feedback/feedback.model";
 import FeedbackCard from "./FeedbackCard";
 
 function FeedbackList() {
-  const [feedbacks, setFeedbacks] = useState([]);
+  const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
+
+  const onIncrementUpvote = (feedbackId: number): void => {
+    const updatedFeedbacks = feedbacks.map((feedback: Feedback) => {
+      if (feedbackId == feedback.id) {
+        feedback.upvotes += 1;
+      }
+      return feedback;
+    });
+
+    setFeedbacks(updatedFeedbacks);
+  };
 
   useEffect(() => {
     const loadData = async () => {
@@ -22,7 +33,11 @@ function FeedbackList() {
   return (
     <div className="">
       {feedbacks.map((feedback: Feedback) => (
-        <FeedbackCard key={feedback.id} feedback={feedback} />
+        <FeedbackCard
+          key={feedback.id}
+          feedback={feedback}
+          onIncrementUpvote={onIncrementUpvote}
+        />
       ))}
     </div>
   );
