@@ -1,39 +1,46 @@
-import { useState } from "react";
-import { Comment } from "../../models/feedback/comment.model";
+import { useAtom } from "jotai";
+import { feedbacksAtom } from "../../atoms/feedbacks.atom";
 import { Feedback } from "../../models/feedback/feedback.model";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   feedback: Feedback;
-  onIncrementUpvote: (feedbackId: number) => void;
+  canNavigate: boolean;
 }
 
-function FeedbackCard({ feedback, onIncrementUpvote }: Props) {
-  const onUpvote = (): void => {
-    onIncrementUpvote(feedback.id);
+function FeedbackCard({ feedback, canNavigate }: Props) {
+  const navigate = useNavigate();
+  const [feedbacks, setFeedbacks] = useAtom(feedbacksAtom);
+
+  const onIncrementUpvote = (feedbackId: number): void => {
+    const updatedFeedbacks = feedbacks.map((feedback: Feedback) => {
+      if (feedbackId == feedback.id) {
+        feedback.upvotes += 1;
+      }
+      return feedback;
+    });
+
+    setFeedbacks(updatedFeedbacks);
   };
 
   return (
     <div className=" mb:15 bg:gray-30">
-      <h3>{feedback.id}</h3>
       <h3>{feedback.title}</h3>
       <p>{feedback.category}</p>
-      <button className="my:2 p:2 bg:white" onClick={onUpvote}>
+      <button
+        className="my:2 p:2 bg:white"
+        onClick={() => onIncrementUpvote(feedback.id)}
+      >
         {feedback.upvotes}
       </button>
       <p>{feedback.description}</p>
-      <button>
+      <button
+        onClick={
+          canNavigate ? () => navigate(`feedback/${feedback.id}`) : () => {}
+        }
+      >
         <img src="/icons/comment.svg" />
       </button>
-      {feedback.comments != null &&
-        feedback.comments.map((comment: Comment) => (
-          <div key={comment.id}>
-            <p>{comment.id}</p>
-            <p>{comment.user.image}</p>
-            <p>{comment.user.name}</p>
-            <p>{comment.user.username}</p>
-            <p>{comment.content}</p>
-          </div>
-        ))}
     </div>
   );
 }
