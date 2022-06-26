@@ -1,4 +1,5 @@
 import DashboardPage from "./pages/DashboardPage";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   return (

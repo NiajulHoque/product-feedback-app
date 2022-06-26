@@ -12,7 +12,8 @@
     "@master/style": "^1.6.0",
     "@master/styles": "^1.14.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-router-dom": "6"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
