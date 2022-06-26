@@ -21,14 +21,17 @@ function FeedbackCard({ feedback, onIncrementUpvote }: Props) {
         {feedback.upvotes}
       </button>
       <p>{feedback.description}</p>
+      <button>
+        <img src="/icons/comment.svg" />
+      </button>
       {feedback.comments != null &&
         feedback.comments.map((comment: Comment) => (
           <div key={comment.id}>
             <p>{comment.id}</p>
-            <p>{comment.content}</p>
             <p>{comment.user.image}</p>
             <p>{comment.user.name}</p>
             <p>{comment.user.username}</p>
+            <p>{comment.content}</p>
           </div>
         ))}
     </div>
