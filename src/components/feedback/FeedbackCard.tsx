@@ -11,6 +11,7 @@ interface Props {
 function FeedbackCard({ feedback, canNavigate }: Props) {
   const navigate = useNavigate();
   const [feedbacks, setFeedbacks] = useAtom(feedbacksAtom);
+  const amountOfComments = feedback.comments?.length;
 
   const onIncrementUpvote = (feedbackId: number): void => {
     const updatedFeedbacks = feedbacks.map((feedback: Feedback) => {
@@ -41,6 +42,7 @@ function FeedbackCard({ feedback, canNavigate }: Props) {
       >
         <img src="/icons/comment.svg" />
       </button>
+      <p>{amountOfComments}</p>
     </div>
   );
 }

@@ -1,11 +1,11 @@
-import DashboardPage from "./pages/DashboardPage";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import { feedbacksAtom } from "./atoms/feedbacks.atom";
 import { Outlet } from "react-router-dom";
 
 function App() {
-  const [, setFeedbacks] = useAtom(feedbacksAtom);
+  const [feedbacks, setFeedbacks] = useAtom(feedbacksAtom);
+  const [hasLoadedData, setHasLoadedData] = useState<boolean>(false);
 
   useEffect(() => {
     const loadData = async () => {
@@ -16,6 +16,8 @@ function App() {
         setFeedbacks(data.productRequests);
       } catch (error) {
         console.error(error);
+      } finally {
+        setHasLoadedData(true);
       }
     };
 
@@ -24,7 +26,8 @@ function App() {
 
   return (
     <div>
-      <Outlet />
+      {!hasLoadedData && <p>Content is Loading...</p>}
+      {hasLoadedData && feedbacks.length > 0 && <Outlet />}
     </div>
   );
 }
